@@ -22,6 +22,9 @@ import org.springframework.web.bind.annotation.*;
 // Optional is used for safely handling the case where a transaction may not be found by ID
 import java.util.Optional;
 
+import jakarta.validation.Valid;
+
+
 // Mark this class as a REST controller so Spring Boot can expose it via HTTP
 @RestController
 // Base URL for all endpoints in this class: http://localhost:8080/api/transactions
@@ -40,7 +43,7 @@ public class TransactionController {
     // POST /api/transactions
     // This endpoint creates a new transaction using the JSON body provided
     @PostMapping
-    public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
+    public ResponseEntity<Transaction> createTransaction(@Valid @RequestBody Transaction transaction) {
         // Save the transaction using the service
         Transaction saved = transactionService.saveTransaction(transaction);
         // Return the saved object as JSON with HTTP 200 OK
