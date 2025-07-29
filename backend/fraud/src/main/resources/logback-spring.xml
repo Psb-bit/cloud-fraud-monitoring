@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <!-- Console appender -->
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- Root logger -->
+  <root level="INFO">
+    <appender-ref ref="CONSOLE" />
+  </root>
+
+  <!-- Kafka logging suppression -->
+  <logger name="org.apache.kafka" level="ERROR" additivity="false"/>
+  <logger name="org.apache.kafka.clients" level="ERROR" additivity="false"/>
+  <logger name="org.apache.kafka.clients.NetworkClient" level="ERROR" />
+  <logger name="org.apache.kafka.clients.FetchSessionHandler" level="ERROR" />
+  <logger name="org.apache.kafka.clients.consumer.internals.ConsumerCoordinator" level="ERROR" />
+  <logger name="org.apache.kafka.clients.consumer.internals.AbstractFetcher" level="ERROR" />
+  <logger name="org.apache.kafka.clients.consumer.internals.Fetcher" level="ERROR" />
+  <logger name="org.apache.kafka.common.network.Selector" level="ERROR" />
+  <logger name="org.apache.kafka.common.utils.AppInfoParser" level="ERROR" />
+
+  <!-- Spring Kafka -->
+  <logger name="org.springframework.kafka" level="ERROR" additivity="false"/>
+  <logger name="org.springframework.kafka.listener.KafkaMessageListenerContainer" level="ERROR"/>
+  <logger name="org.springframework.kafka.listener.LoggingErrorHandler" level="ERROR"/>
+  <logger name="org.springframework.kafka.listener.adapter.MessagingMessageListenerAdapter" level="ERROR"/>
+
+</configuration>

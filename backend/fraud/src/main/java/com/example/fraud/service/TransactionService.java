@@ -23,6 +23,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 // Marks this class as a Spring service, so it is detected during component scanning.
 import org.springframework.stereotype.Service;
 
+import com.example.fraud.kafka.KafkaProducerService;
+
+
+
 // Java standard library imports:
 import java.util.List;           // Interface for a list of objects (like an array that grows)
 import java.util.ArrayList;      // Implementation of the List interface
@@ -59,6 +63,10 @@ public class TransactionService {
         this.transactionRepository = transactionRepository;
     }
 
+    @Autowired
+    private KafkaProducerService kafkaProducerService;
+
+
     // -------------------------------------
     // Method to Save a Transaction
     // -------------------------------------
@@ -69,6 +77,10 @@ public class TransactionService {
      * @return the transaction with fraud detection results
      */
     public Transaction saveTransaction(Transaction transaction) {
+
+
+    kafkaProducerService.sendTransaction("transactions-topic",transaction);
+
 
         // `getDevice()` gets the device string from the Transaction object.
         // `!= null` checks if the string exists to avoid NullPointerException.

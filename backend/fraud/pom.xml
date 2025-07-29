@@ -88,6 +88,11 @@
     <version>7.0.5.Final</version>
 </dependency>
 
+<!-- Kafka Support -->
+<dependency>
+    <groupId>org.springframework.kafka</groupId>
+    <artifactId>spring-kafka</artifactId>
+</dependency>
 
 	</dependencies>
 
