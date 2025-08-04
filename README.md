@@ -1,4 +1,4 @@
-# cloud-fraud-monitoring
+# Cloud-fraud-monitoring
 
 A backend system built with Java Spring Boot and AWS to detect and flag fraudulent transactions in real-time using rule-based logic. It integrates Kafka for scalable message streaming, MySQL (AWS RDS) for persistent storage, and Power BI for fraud analytics and reporting.
 
